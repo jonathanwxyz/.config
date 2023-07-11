@@ -1,0 +1,12 @@
+/*
+
+!.gitignore
+!tmux/
+!zsh/
+!nvim/
+nvim/plugin/
+!alacritty/
+!shell/
+!user-dirs.dirs
+!user-dirs.locale
+!distrobox/

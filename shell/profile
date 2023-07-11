@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# default programs
+export EDITOR="nvim"
+# export TERMINAL="alacritty"
+export BROWSER="firefox"
+
+# xdg folders
+# https://wiki.archlinux.org/title/XDG_Base_Directory
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# add programming tools to path
+export DENO_INSTALL="$XDG_DATA_HOME/deno"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOROOT="/usr/local/go"
+source "$CARGO_HOME/env"
+export N_PREFIX="$XDG_DATA_HOME/n"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$CARGO_HOME/bin:$DENO_INSTALL/bin\
+    :$N_PREFIX/bin"
+
+# ~/ clean up
+export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefix/default"
+
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+
+[ -f "$XDG_DATA_HOME/ghcup/env" ] && source "$XDG_DATA_HOME/ghcup/env" # ghcup-env
+
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/share/flutter/bin"

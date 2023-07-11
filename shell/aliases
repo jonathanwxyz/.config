@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# aliases
+alias dox="cd $XDG_DOCUMENTS_DIR"
+alias dl="cd $XDG_DOWNLOADS_DIR"
+alias blog="cd ~/code/blog"
+alias con="source $XDG_DATA_HOME/anaconda3/bin/activate"
+alias v="nvim"
+alias vc="nvim $XDG_CONFIG_HOME/nvim/"
+alias zc="nvim $XDG_CONFIG_HOME/zsh/"
+alias sc="nvim $XDG_CONFIG_HOME/shell"
+alias tn="tmux new-session -s"
+alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
+alias apache-start="podman run --rm --detach -p 8080:80 --name phpapp -v /var/home/jonathan/code/apache:/var/www/html:z php:7.2-apache"
+alias apache-kill="podman kill phpapp"
+# alias up="sudo apt update && sudo apt upgrade"
+
+alias uni="cd ~/code/uni/"
+alias alg="cd ~/code/uni/COMP26120_f85709jw"
+alias ai="cd ~/code/uni/COMP24011_f85709jw"
+alias swe="cd ~/code/uni/soft_eng_comp23311"
+alias plp="cd ~/code/uni/paradigms"
+alias ds="cd ~/code/uni/ds"
+alias cv="cd ~/documents/cv"
+alias nous="cd ~/documents/nous"
+
+# alias eclipse="./~/.local/share/eclipse/java-2022-12/eclipse/eclipse"
+
+if cat /etc/*-release | grep -q Silverblue; then
+    # alias nvim="distrobox run -c dev37 nvim"
+    # alias lvim="distrobox run -c dev37 lvim"
+fi

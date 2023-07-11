@@ -1,0 +1,5 @@
+require("jonathan.plugins")
+require("jonathan.autocmds")
+require("jonathan.mappings")
+require("jonathan.options")
+require("jonathan.styling")

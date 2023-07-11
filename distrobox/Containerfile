@@ -1,0 +1,54 @@
+FROM registry.fedoraproject.org/fedora-toolbox:37
+
+RUN dnf -y upgrade --refresh
+RUN dnf -y install neovim make unzip wget git zsh tmux htop neofetch \
+                    fzf java-11-openjdk-devel powertop pip texlive-scheme-full \
+                    conda pypy cmake clang-tools-extra
+RUN dnf -y groupinstall "C Development Tools and Libraries"
+
+RUN wget "https://github.com/rpmsphere/noarch/raw/master/r/rpmsphere-release-36-1.noarch.rpm" && \
+    rpm -Uvh rpmsphere-release*rpm && \
+    dnf -y install powerstat && \
+    rm rpmsphere-release-36-1.noarch.rpm
+
+# install vscodium
+RUN printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" \
+    | tee -a /etc/yum.repos.d/vscodium.repo && \
+    rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg && \
+    dnf -y install codium
+
+# go installation
+RUN wget https://go.dev/dl/go1.19.linux-amd64.tar.gz  && \
+    rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.linux-amd64.tar.gz && \
+    rm go1.19.linux-amd64.tar.gz
+
+# zsh setup
+# RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git && \
+#     cd zsh-syntax-highlighting && \
+#     make install && \
+#     cd .. && \
+#     rm -rf zsh-syntax-highlighting
+
+# rust installation
+# RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+#    | sh -s -- -y --no-modify-path
+
+# rust-analyzer installation
+# RUN mkdir -p /usr/local/bin && \
+#     curl -L https://github.com/rust-lang/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > /usr/local/bin/rust-analyzer && \
+#     chmod +x /usr/local/bin/rust-analyzer
+
+
+# gopls installation
+# RUN export PATH="PATH:/usr/local/go/bin" && \
+#     go install golang.org/x/tools/gopls@latest
+
+# RUN pip install pyright
+#
+# RUN npm i -g typescript typescript-language-server
+#
+# RUN npm i -g bash-language-server
+#
+# RUN npm i -g vscode-langservers-extracted
+
+# RUN npm install -g @tailwindcss/language-server
