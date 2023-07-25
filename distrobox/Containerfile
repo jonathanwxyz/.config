@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:37
+FROM registry.fedoraproject.org/fedora-toolbox:38
 
 RUN dnf -y upgrade --refresh
 RUN dnf -y install neovim make unzip wget git zsh tmux htop neofetch \

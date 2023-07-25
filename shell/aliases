@@ -10,6 +10,7 @@ alias vc="nvim $XDG_CONFIG_HOME/nvim/"
 alias zc="nvim $XDG_CONFIG_HOME/zsh/"
 alias sc="nvim $XDG_CONFIG_HOME/shell"
 alias tn="tmux new-session -s"
+alias dbx="distrobox"
 alias wget="wget --hsts-file=\"$XDG_CACHE_HOME/wget-hsts\""
 alias apache-start="podman run --rm --detach -p 8080:80 --name phpapp -v /var/home/jonathan/code/apache:/var/www/html:z php:7.2-apache"
 alias apache-kill="podman kill phpapp"
@@ -23,6 +24,9 @@ alias plp="cd ~/code/uni/paradigms"
 alias ds="cd ~/code/uni/ds"
 alias cv="cd ~/documents/cv"
 alias nous="cd ~/documents/nous"
+
+alias acme="fontsrv & 9 acme -f /mnt/font/'GoMono'/13a/font &"
+alias goacme="acme-lsp -server '([/\\]go\.mod)|([/\\]go\.sum)|(\.go)$:gopls serve' -workspaces /path/to/mod1:/path/to/mod2"
 
 # alias eclipse="./~/.local/share/eclipse/java-2022-12/eclipse/eclipse"
 

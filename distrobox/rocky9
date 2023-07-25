@@ -1,0 +1,5 @@
+FROM quay.io/toolbx-images/rockylinux-toolbox:9
+
+RUN dnf -y upgrade --refresh
+RUN dnf -y install rpmdevtools rpmlint
+RUN dnf -y install ninja-build cmake gcc make unzip gettext curl
